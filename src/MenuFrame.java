@@ -7,7 +7,7 @@ public class MenuFrame {
     public MenuFrame() {
         JFrame frame = new JFrame("Menu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(816, 480);
+        frame.setSize(830, 518);
         frame.setLocationRelativeTo(null); // auto-centers frame in screen
 
         // create and add panel
@@ -16,6 +16,5 @@ public class MenuFrame {
 
         // display the frame
         frame.setVisible(true);
-
     }
 }

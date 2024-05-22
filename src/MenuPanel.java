@@ -15,6 +15,7 @@ public class MenuPanel extends JPanel implements ActionListener {
     private JFrame enclosngFrame;
 
     public MenuPanel(JFrame frame) {
+        enclosngFrame = frame;
         try {
             menuBackground = ImageIO.read(new File("menu-background.png"));
             title = ImageIO.read(new File("title.png"));
@@ -54,7 +55,11 @@ public class MenuPanel extends JPanel implements ActionListener {
             JButton button = (JButton) e.getSource();
 
             if (button == singleplayer) {
-
+                MainFrame f = new MainFrame(1);
+                enclosngFrame.setVisible(false); // close this window
+            } else {
+                MainFrame f = new MainFrame(2);
+                enclosngFrame.setVisible(false); // close this window
             }
         }
 
