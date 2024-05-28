@@ -10,8 +10,9 @@ import java.nio.Buffer;
 
 public class Player {
     private BufferedImage player;
-    private int x;
-    private int y;
+    private final double MOVE_AMT = 0.5;
+    private double x;
+    private double y;
     private boolean isAlive;
     private int damage;
 
@@ -22,8 +23,8 @@ public class Player {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        x = 10;
-        y = 300;
+        x = 100;
+        y = 350;
         isAlive = true;
         damage = 1;
     }
@@ -33,11 +34,11 @@ public class Player {
     }
 
     public int getX() {
-        return x;
+        return (int) x;
     }
 
     public int getY() {
-        return y;
+        return (int) y;
     }
 
     public boolean getHealth() {
@@ -55,6 +56,27 @@ public class Player {
     public void setyCoord(int newY) {
         y = newY;
     }
+
+    public void died() {
+        isAlive = false;
+    }
+
+    public void moveUp() {
+        y -= MOVE_AMT;
+    }
+
+    public void moveDown() {
+        y += MOVE_AMT;
+    }
+
+    public void moveRight() {
+        x += MOVE_AMT;
+    }
+
+    public void moveLeft() {
+        x -= MOVE_AMT;
+    }
+
 
     public void upgradeDamage(int addDamage) {
         damage += addDamage;
