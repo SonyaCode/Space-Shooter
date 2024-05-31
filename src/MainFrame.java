@@ -6,7 +6,7 @@ public class MainFrame implements Runnable {
     public MainFrame(int numOfPlayers) {
         JFrame frame = new JFrame("Space Shooter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(964, 595);
+        frame.setSize(1214, 743);
         frame.setLocationRelativeTo(null);
 
         panel = new GraphicsPanel(numOfPlayers);

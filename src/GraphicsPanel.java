@@ -12,6 +12,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     private int numOfPlayers;
     private Player player1;
     private Player player2;
+    private ArrayList<Weapon> bullets;
     private boolean[] pressedKeys;
     private Timer timer;
     private int time;
@@ -28,7 +29,10 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
 
         if (numOfPlayers == 2) {
             player2 = new Player("red-spaceship.png");
+            player2.setxCoord(player2.getX() + 900);
         }
+
+        bullets = new ArrayList<Weapon>();
 
         this.numOfPlayers = numOfPlayers;
         pressedKeys = new boolean[128]; // 128 keys
@@ -46,8 +50,11 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
         g.drawImage(player1.getPlayerImage(), player1.getX(), player1.getY(), null);
 
         if (numOfPlayers == 2) {
-            g.drawImage(player2.getPlayerImage(), player2.getX() + 600, player2.getY(), null);
+            g.drawImage(player2.getPlayerImage(), player2.getX(), player2.getY(), null);
         }
+
+        g.drawRect((int) player1.getX(), (int) player1.getY(), player1.getPlayerImage().getWidth(), player1.getPlayerImage().getHeight() - 10);
+        g.drawRect((int) player2.getX(), (int) player2.getY(), player2.getPlayerImage().getWidth(), player2.getPlayerImage().getHeight());
 
         // ----- player 1 movement -----
         // player 1 moves up [W]
@@ -70,6 +77,8 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
             player1.moveRight();
         }
 
+
+        // ----- player 2 movement -----
         if (numOfPlayers == 2) {
             // player 2 moves up [up arrow]
             if (pressedKeys[38]) {
@@ -92,6 +101,14 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
             }
 
         }
+
+        for (int i = 0; i < bullets.size(); i++) {
+            Weapon bullet = bullets.get(i);
+            if (bullet.getX() >= 0) {
+                bullet.setY(bullet.getY() - 1);
+            }
+            g.drawImage(bullet.getLaserImage(), bullet.getX(), bullet.getY(), null);
+        }
     }
 
     // KeyListener Interface Method
@@ -105,6 +122,12 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         pressedKeys[key] = false;
+
+        // shoot the bullet
+        if (key == KeyEvent.VK_E) {
+            Weapon bullet = new Weapon(player1, "laser.png", player1.getX() + 57, player1.getY() - 40);
+            bullets.add(bullet);
+        }
     }
 
     // MouseListener Interface Methods (most likely don't need them)

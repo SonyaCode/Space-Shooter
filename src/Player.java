@@ -15,6 +15,7 @@ public class Player {
     private double y;
     private boolean isAlive;
     private int damage;
+    private boolean shield;
 
 
     public Player(String spaceship) {
@@ -24,9 +25,10 @@ public class Player {
             System.out.println(e.getMessage());
         }
         x = 100;
-        y = 350;
+        y = 550;
         isAlive = true;
         damage = 1;
+        shield = false;
     }
 
     public BufferedImage getPlayerImage() {
@@ -62,24 +64,37 @@ public class Player {
     }
 
     public void moveUp() {
-        y -= MOVE_AMT;
+        if (y - MOVE_AMT >= 0) {
+            y -= MOVE_AMT;
+        }
     }
 
     public void moveDown() {
-        y += MOVE_AMT;
+        if (y + MOVE_AMT <= 610) {
+            y += MOVE_AMT;
+        }
     }
 
     public void moveRight() {
-        x += MOVE_AMT;
+        if (x + MOVE_AMT <= 1075) {
+            x += MOVE_AMT;
+        }
     }
 
     public void moveLeft() {
-        x -= MOVE_AMT;
+        if (x - MOVE_AMT >= 0) {
+            x -= MOVE_AMT;
+        }
     }
 
 
     public void upgradeDamage(int addDamage) {
         damage += addDamage;
+    }
+
+    public Rectangle playerRect() {
+        Rectangle rectangle = new Rectangle((int) x, (int) y, player.getWidth(), player.getHeight());
+        return rectangle;
     }
 
 }
