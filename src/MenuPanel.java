@@ -1,3 +1,4 @@
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -17,8 +18,8 @@ public class MenuPanel extends JPanel implements ActionListener {
     public MenuPanel(JFrame frame) {
         enclosngFrame = frame;
         try {
-            menuBackground = ImageIO.read(new File("menu-background.png"));
-            title = ImageIO.read(new File("title.png"));
+            menuBackground = ImageIO.read(new File("assets/menu-background.png"));
+            title = ImageIO.read(new File("assets/title.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

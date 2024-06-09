@@ -1,3 +1,4 @@
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,29 +11,43 @@ import java.nio.Buffer;
 
 public class Player {
     private BufferedImage player;
-    private final double MOVE_AMT = 0.5;
+    private BufferedImage shield;
+    private String color;
+    private final double MOVE_AMT = 1; // school desktop: 0.3
     private double x;
     private double y;
     private boolean isAlive;
+    private int level;
     private int damage;
-    private boolean shield;
+    private boolean hasShield;
 
 
-    public Player(String spaceship) {
+    public Player(String spaceshipColor) {
         try {
-            player = ImageIO.read(new File(spaceship));
+            player = ImageIO.read(new File("assets/" + spaceshipColor + "-spaceship.png"));
+            shield = ImageIO.read(new File("assets/shield.png"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        this.color = spaceshipColor;
         x = 100;
         y = 550;
         isAlive = true;
-        damage = 1;
-        shield = false;
+        level = 1;
+        damage = 20;
+        hasShield = false;
     }
 
     public BufferedImage getPlayerImage() {
         return player;
+    }
+
+    public BufferedImage getShieldImage() {
+        return shield;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public int getX() {
@@ -51,6 +66,10 @@ public class Player {
         return damage;
     }
 
+    public boolean hasShield() {
+        return hasShield;
+    }
+
     public void setxCoord(int newX) {
         x = newX;
     }
@@ -61,6 +80,7 @@ public class Player {
 
     public void died() {
         isAlive = false;
+        hasShield = false;
     }
 
     public void moveUp() {
@@ -87,9 +107,16 @@ public class Player {
         }
     }
 
-
-    public void upgradeDamage(int addDamage) {
+    public void increaseDamage(int addDamage) {
         damage += addDamage;
+    }
+
+    public void addShield() {
+        hasShield = true;
+    }
+
+    public void removeShield() {
+        hasShield = false;
     }
 
     public Rectangle playerRect() {
