@@ -9,7 +9,7 @@ public class MainFrame implements Runnable {
         frame.setSize(1214, 743);
         frame.setLocationRelativeTo(null);
 
-        panel = new GraphicsPanel(numOfPlayers);
+        panel = new GraphicsPanel(frame, numOfPlayers);
         frame.add(panel);
 
         frame.setVisible(true);

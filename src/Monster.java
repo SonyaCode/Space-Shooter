@@ -15,6 +15,7 @@ public class Monster {
     private boolean isAlive;
 
     public Monster(Player player) {
+        // random spawn
         int randomPick = 0;
         if (player.getDamage() >= 10) {
             randomPick = (int) (Math.random() * 4) + 1;
@@ -24,7 +25,7 @@ public class Monster {
             randomPick = (int) (Math.random() * 2) + 1;
         }
 
-        if (player.getDamage() >= 20 && randomPick == 4) {
+        if (player.getDamage() >= 20 && randomPick == 4) { // unlock when damage = 20
             try {
                 monster = ImageIO.read(new File("assets/boss-monster.png"));
             } catch (IOException e){
@@ -33,7 +34,7 @@ public class Monster {
             enemyName = "Boss";
             health = 50;
 
-        } else if (player.getDamage() >= 8 && randomPick == 3) {
+        } else if (player.getDamage() >= 8 && randomPick == 3) { // unlock when damage = 8
             try {
                 monster = ImageIO.read(new File("assets/green-horn-monster.png"));
             } catch (IOException e){
@@ -42,7 +43,7 @@ public class Monster {
             enemyName = "Green Horn Monster";
             health = 15;
 
-        } else if (player.getDamage() >= 3 && randomPick == 2) {
+        } else if (player.getDamage() >= 3 && randomPick == 2) { // unlock when damage = 3
             try {
                 monster = ImageIO.read(new File("assets/bug-monster.png"));
             } catch (IOException e){
@@ -65,10 +66,10 @@ public class Monster {
         if (enemyName.equals("Green Horn Monster")) {
             moveAmt = Math.random() * 0.15 + 0.05; // randomize the speed of each green horn monster
             x = 0;
-            y = (int) (Math.random() * 251);
+            y = (int) (Math.random() * 251); // spawn at random y-coordinate
         } else {
             moveAmt = 0.15;
-            x = (int) (Math.random() * 951);
+            x = (int) (Math.random() * 951); // spawn at random x-coordinate
             y = 0;
         }
 
@@ -104,10 +105,6 @@ public class Monster {
         health -= subtract;
     }
 
-    public boolean status() {
-        return isAlive;
-    }
-
     public void setX(int newX) {
         x = newX;
     }
@@ -119,6 +116,7 @@ public class Monster {
     public void moveDown() {
         y += moveAmt;
     }
+
     public void moveRight() {
         x += moveAmt;
     }

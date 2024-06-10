@@ -12,9 +12,9 @@ public class Drop {
     private int upgradeAmount;
 
     public Drop(Player player, Monster monster) {
-        int random = (int) (Math.random() * 50) + 1;
+        int random = (int) (Math.random() * 10) + 1;
 
-        // if the monster is going to drop something, the drop rate for upgrade is 70%
+        // if the monster is going to drop something, the drop rate for upgrade is 70% (overall drop rate: 14%)
         if (random <= 7) {
             try {
                 drop = ImageIO.read(new File("assets/" + player.getColor() + "-upgrade.png"));
@@ -23,7 +23,7 @@ public class Drop {
             }
             type = "upgrade";
         } else {
-            // if the monster is going to drop something, the drop rate for upgrade is 30%
+            // if the monster is going to drop something, the drop rate for upgrade is 30% (overall drop rate: 6%)
             try {
                 drop = ImageIO.read(new File("assets/" + player.getColor() + "-shield-drop.png"));
             } catch (IOException e) {
@@ -61,14 +61,6 @@ public class Drop {
         return (int) y;
     }
 
-    public void setX(double newX) {
-        x = newX;
-    }
-
-    public void setY(double newY) {
-        y = newY;
-    }
-
     public void fall() {
         y += 0.1;
     }
@@ -80,8 +72,5 @@ public class Drop {
         Rectangle rectangle = new Rectangle((int) x, (int) y, drop.getWidth(), drop.getHeight());
         return rectangle;
     }
-
-
-
 
 }

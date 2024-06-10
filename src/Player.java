@@ -1,23 +1,17 @@
-
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 
 public class Player {
     private BufferedImage player;
     private BufferedImage shield;
     private String color;
-    private final double MOVE_AMT = 1; // school desktop: 0.3
+    private final double MOVE_AMT = 1;
     private double x;
     private double y;
     private boolean isAlive;
-    private int level;
     private int damage;
     private boolean hasShield;
 
@@ -33,8 +27,7 @@ public class Player {
         x = 100;
         y = 550;
         isAlive = true;
-        level = 1;
-        damage = 20;
+        damage = 1;
         hasShield = false;
     }
 
@@ -58,7 +51,7 @@ public class Player {
         return (int) y;
     }
 
-    public boolean getHealth() {
+    public boolean isAlive() {
         return isAlive;
     }
 
@@ -120,6 +113,10 @@ public class Player {
     }
 
     public Rectangle playerRect() {
+        if (!isAlive) {
+            Rectangle rectangle = new Rectangle((int) x, (int) y, 0, 0);
+            return rectangle;
+        }
         Rectangle rectangle = new Rectangle((int) x, (int) y, player.getWidth(), player.getHeight());
         return rectangle;
     }

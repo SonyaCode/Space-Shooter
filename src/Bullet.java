@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public class Bullet {
     private BufferedImage bullet;
-    private boolean isAsteroid;
     private double x;
     private double y;
     private boolean fromPlayer;
@@ -18,23 +17,10 @@ public class Bullet {
             System.out.println(e.getMessage());
         }
 
-        isAsteroid = false;
         this.x = x;
         this.y = y;
         this.fromPlayer = fromPlayer;
     }
-
-    /*
-    public Bullet(String attack, double x, double y, boolean fromPlayer, boolean isAsteroid) {
-        this(attack, x, y, fromPlayer);
-        this.isAsteroid = isAsteroid;
-    }
-
-    public boolean isAsteroid() {
-        return isAsteroid;
-    }
-
-     */
 
     public int getX() {
         return (int) x;

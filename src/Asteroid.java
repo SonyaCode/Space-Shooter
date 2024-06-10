@@ -8,7 +8,6 @@ public class Asteroid {
     private BufferedImage asteroid;
     private double x;
     private double y;
-    private int health;
     private String direction;
 
     public Asteroid(double x, double y) {
@@ -19,7 +18,6 @@ public class Asteroid {
         }
         this.x = x;
         this.y = y;
-        health = 2;
         int randomDirection = (int) (Math.random() * 3) + 1;
 
         if (randomDirection == 1) {
@@ -41,14 +39,6 @@ public class Asteroid {
 
     public int getY() {
         return (int) y;
-    }
-
-    public void setX(double newX) {
-        x = newX;
-    }
-
-    public void setY(double newY) {
-        y = newY;
     }
 
     public String getDirection() {
