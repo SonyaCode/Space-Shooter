@@ -301,9 +301,9 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
             for (int i = 0; i < bullets.size(); i++) {
                 Bullet bullet = bullets.get(i);
                 if (bullet.getY() > 0 && bullet.isFromPlayer()) {
-                    bullet.setY(bullet.getY() - 1.2);
+                    bullet.playerShoot();
                 } else if (bullet.getY() < 743 && !bullet.isFromPlayer()) {
-                    bullet.setY(bullet.getY() + 1);
+                    bullet.monsterShoot();
                 } else {
                     bullets.remove(i);
                     i--;

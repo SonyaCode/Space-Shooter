@@ -38,6 +38,14 @@ public class Bullet {
         y = newY;
     }
 
+    public void playerShoot() {
+        y -= 1.5;
+    }
+
+    public void monsterShoot() {
+        y += 1;
+    }
+
     public BufferedImage getBulletImage() {
         return bullet;
     }
