@@ -76,8 +76,6 @@ public class Monster {
             stopPosY = (int) (Math.random() * 200);
         }
 
-        isAlive = true;
-
     }
 
     public BufferedImage getMonsterImage() {
