@@ -12,7 +12,6 @@ public class Monster {
     private int stopPosY;
     private double moveAmt;
     private int health;
-    private boolean isAlive;
 
     public Monster(Player player) {
         // random spawn
