@@ -11,6 +11,7 @@ public class Drop {
     private double y;
     private int upgradeAmount;
 
+
     public Drop(Player player, Monster monster) {
         int random = (int) (Math.random() * 10) + 1;
 

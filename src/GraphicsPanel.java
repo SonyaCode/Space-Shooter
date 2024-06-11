@@ -118,7 +118,13 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                 int numOfMonsters = (int) (Math.random() * 5) + 1;
 
                 for (int i = 0; i < numOfMonsters; i++) {
-                    Monster monster = new Monster(player1);
+                    Monster monster;
+                    if (numOfPlayers == 2 && player2.getDamage() > player1.getDamage()) {
+                        monster = new Monster(player2);
+                    } else {
+                        monster = new Monster(player1);
+                    }
+
                     monsters.add(monster);
                 }
 
@@ -326,7 +332,6 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                     i--;
                 }
 
-                g.drawRect(asteroid.getX(), asteroid.getY(), asteroid.getAsteroidImage().getWidth(), asteroid.getAsteroidImage().getHeight());
                 g.drawImage(asteroid.getAsteroidImage(), asteroid.getX(), asteroid.getY(), null);
             }
 
@@ -578,7 +583,7 @@ public class GraphicsPanel extends JPanel implements KeyListener, MouseListener,
                 for (Monster monster : monsters) {
                     int random = (int) (Math.random() * 5) + 1;
                     if ((monster.getName().equals("Bug") || monster.getName().equals("Green Horn Monster")) && random >= 2) {
-                        Bullet monsterLaser = new Bullet("assets/monster-laser.png", monster.getX() + 25, monster.getY() + 64, false);
+                        Bullet monsterLaser = new Bullet("assets/monster-laser.png", monster.getX() + 40, monster.getY() + 64, false);
                         bullets.add(monsterLaser);
                     } else if (monster.getName().equals("Boss") && random >= 2) {
                         Asteroid asteroid = new Asteroid(monster.getX() + 60, monster.getY() + 90);

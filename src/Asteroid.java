@@ -10,6 +10,7 @@ public class Asteroid {
     private double y;
     private String direction;
 
+
     public Asteroid(double x, double y) {
         try {
             asteroid = ImageIO.read(new File("assets/asteroid.png"));

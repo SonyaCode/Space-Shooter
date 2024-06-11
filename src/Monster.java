@@ -13,6 +13,7 @@ public class Monster {
     private double moveAmt;
     private int health;
 
+
     public Monster(Player player) {
         // random spawn
         int randomPick = 0;
@@ -126,6 +127,5 @@ public class Monster {
         Rectangle rectangle = new Rectangle((int) x, (int) y, monster.getWidth(), monster.getHeight());
         return rectangle;
     }
-
 
 }

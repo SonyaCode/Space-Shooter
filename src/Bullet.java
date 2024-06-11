@@ -10,6 +10,7 @@ public class Bullet {
     private double y;
     private boolean fromPlayer;
 
+
     public Bullet(String attack, double x, double y, boolean fromPlayer) { // add a from which player
         try {
             bullet = ImageIO.read(new File(attack));
@@ -28,14 +29,6 @@ public class Bullet {
 
     public int getY() {
         return (int) y;
-    }
-
-    public void setX(double newX) {
-        x = newX;
-    }
-
-    public void setY(double newY) {
-        y = newY;
     }
 
     public void playerShoot() {
